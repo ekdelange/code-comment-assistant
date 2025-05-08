@@ -1,7 +1,8 @@
 import os
+import sys
 from openai import AzureOpenAI
 from dotenv import load_dotenv
-import sys
+
 
 load_dotenv()
 
