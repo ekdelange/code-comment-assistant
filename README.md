@@ -53,14 +53,28 @@
    HF_MODEL=<model-name>
    ```
 
-   Additional settings:
-   ```env
-   TARGET_LANGUAGE=Python  # or C++
-   ```
-
 ## Usage
 
-Run the script with the directory you want to process:
+You can use the app via the command line or the graphical user interface (GUI).
+
+### GUI Usage (Recommended)
+
+1. Run the script without arguments:
+
+   ```bash
+   python auto_docstring.py
+   ```
+
+2. In the GUI:
+   - Select the programming language from the dropdown menu (Python, C++, Java)
+   - Click "Browse Directory" to choose the folder containing your code files
+   - Click "Run" to start processing
+   - The log window will display a summary of processed files
+   - Click "Close" to exit
+
+### Command-Line Usage
+
+You can still run the script with a target directory as an argument (the language will be taken from the .env file, but GUI selection is recommended):
 
 ```bash
 python auto_docstring.py <target_directory>
@@ -68,16 +82,17 @@ python auto_docstring.py <target_directory>
 
 * `<target_directory>`: Path to the folder containing your code files.
 
-After execution:
-- Each original file `example.py` will have an enhanced counterpart `example_c.py`
+After execution (in either mode):
+- Each original file (e.g., `example.py`) will have an enhanced counterpart (e.g., `example_c.py`)
 - A `log.txt` summary will appear in the same directory
 - Both module-level and function-level documentation will be added
 
 ## Configuration
 
-* **LLM Provider**: Set via `LLM_PROVIDER` in .env file (azure/openai/huggingface)
-* **Language**: Set via `TARGET_LANGUAGE` in .env file (Python/C++)
-* **Temperature**: Set to 0 for consistent, accurate documentation
+* **LLM Provider**: Set via `LLM_PROVIDER` in the `.env` file (`azure`, `openai`, or `huggingface`)
+* **API Keys and Endpoints**: Set the relevant keys and endpoints for your provider in `.env`
+* **Language Selection**: Now handled in the GUI (no need to set `TARGET_LANGUAGE` in `.env`)
+* **Temperature**: Set to 0 for consistent, accurate documentation (hardcoded in script)
 * **Prompt Templates**: Located at the top of the script (`MODULE_DOCSTRING_TEMPLATE` and `FUNCTION_DOCSTRING_TEMPLATE`)
 
 ## Contributing
